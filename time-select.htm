@@ -1,0 +1,62 @@
+<html>
+
+<head>
+    <title>jQuery TimeSelect Plugin</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <script src="jquery.timeselect.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#textbox1').timeSelect();
+            $('#textbox2').timeSelect({
+                maxResults: 5,
+                minsInterval: 10,
+                error: function (element, selectedTime) {
+                    alert('You chose "' + selectedTime + '", which is an invalid option.')
+                },
+                success: function (element, selectedTime) {}
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1>jQuery TimeSelect Plugin</h1>
+
+    <h3>Usage</h3>
+    <p>
+    <pre>
+    $('#textbox1').timeSelect();
+
+    $('#textbox2').timeSelect({
+        maxResults: 5,
+        minsInterval: 10,
+        error: function (element, selectedTime) {
+            alert('You chose "' + selectedTime + '", which is an invalid option.')
+        },
+        success: function (element, selectedTime) {}
+    });
+    </pre>
+    </p>
+
+    <h3>Demo</h3>
+    Without options
+    <input id="textbox1" name="textbox1" />
+    <br/><br/>
+    With options
+    <input id="textbox2" name="textbox2" />
+
+    <h3>Options</h3>
+    <p>
+        <strong>maxResults</strong> - (number) Maximum number of results to be shown in the dropdown list. Default is <code>10</code><br/>
+        <strong>minsInterval</strong> - (number) The interval between minutes. Default is <code>5</code> minutes.<br/>
+        <strong>error</strong> - (function) This callback function is fired when the user enters a value that is not present in the dropdown list. The callback is passed two parameters (element, selectedTime).<br/>
+        <strong>success</strong> - (function) This callback function is fired when the user either selects a value from the dropdown list or manually enters a value that was present in the dropdown list. The callback is passed two parameters (element, selectedTime).
+        PS: Both the callbacks are fired only on "onchange" of the input field; not immediately when a value is selected or typed in.
+    </p>
+
+
+</body>
+
+</html>
